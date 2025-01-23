@@ -8,13 +8,8 @@ class ApiService {
   static const String userBaseUrl =
       'https://67911595af8442fd7378f856.mockapi.io/api/user';
 
-  final http.Client client;
-
-  // Constructor accepts an optional client parameter.
-  ApiService({http.Client? client}) : client = client ?? http.Client();
-
   Future<User> fetchUser(int userId) async {
-    final response = await client.get(
+    final response = await http.get(
       Uri.parse('$userBaseUrl/$userId'),
     );
 
@@ -46,14 +41,14 @@ class ApiService {
           transactionId: '', // MockAPI will generate the transaction ID
         );
 
-        final response = await client.post(
+        final response = await http.post(
           Uri.parse(baseUrl),
           headers: {'Content-Type': 'application/json'},
           body: json.encode(transaction.toJson()),
         );
 
         if (response.statusCode == 201) {
-          final updateResponse = await client.put(
+          final updateResponse = await http.put(
             Uri.parse('$userBaseUrl/$userId'),
             headers: {'Content-Type': 'application/json'},
             body: json.encode({
@@ -75,7 +70,7 @@ class ApiService {
   }
 
   Future<List<Transaction>> fetchTransactionHistory(int userId) async {
-    final response = await client.get(
+    final response = await http.get(
       Uri.parse('$baseUrl?user_id=$userId'),
     );
 

@@ -5,9 +5,8 @@ import 'package:send_money_app/services.dart';
 import 'package:send_money_app/styles.dart';
 
 class SendMoneyScreen extends StatefulWidget {
-  final ApiService? apiService;
   final ValueKey? valueKey;
-  const SendMoneyScreen({super.key, this.apiService, this.valueKey});
+  const SendMoneyScreen({super.key, this.valueKey});
 
   @override
   State<SendMoneyScreen> createState() => _SendMoneyScreenState();
