@@ -1,5 +1,3 @@
-# send_money_app
+# send-money-app
 
-An app designed for managing transactions.
-
-## Getting Started
+This is a send money application for a technical exam.
